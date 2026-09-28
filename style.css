@@ -1,0 +1,218 @@
+/* ============================================================
+   PRFT2 — Chirank portfolio custom CSS
+   Palette matched to PRFT1 (light):
+   FDFDFF paper / 393D3F ink / C6C5B9 sand / 62929E teal / 546A7B steel
+   Tailwind handles layout/spacing/color via utilities.
+   This file proves: vars, box model, positioning,
+   transitions, transforms, keyframes, media queries.
+   ============================================================ */
+
+:root {
+  color-scheme: light;      /* lock light theme: stop browsers auto-darkening the palette */
+  --background: #FDFDFF;   /* paper — page background */
+  --surface: #FFFFFF;      /* cards */
+  --text: #393D3F;         /* ink — body text */
+  --muted: #546A7B;        /* steel — secondary text */
+  --accent: #62929E;       /* teal — primary accent */
+  --steel: #546A7B;        /* slate blue-gray */
+  --sand: #C6C5B9;         /* warm gray — bands, soft fills */
+  --radius: 1rem;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--background);
+  color: var(--text);
+}
+::selection { background: var(--accent); color: var(--background); }
+
+.font-mono, code { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+/* ---------- Navbar link underline (transition) ---------- */
+.nav-link {
+  position: relative;
+  transition: color 0.25s ease;
+}
+.nav-link:hover { color: var(--accent); }
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 100%; height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.nav-link:hover::after { transform: scaleX(1); }
+
+/* ---------- Hero glow (absolute positioning + blur) ---------- */
+#hero { position: relative; }
+.hero-glow {
+  position: absolute;
+  top: -120px; left: 50%;
+  width: 640px; height: 320px;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(closest-side, rgba(98,146,158,0.22), transparent),
+    radial-gradient(closest-side, rgba(198,197,185,0.35), transparent);
+  filter: blur(10px);
+  pointer-events: none;
+  z-index: 0;
+}
+#hero > div { position: relative; z-index: 1; }
+
+/* ---------- Pills / tags (box model demo) ---------- */
+.pill {
+  display: inline-block;
+  padding: 6px 12px;              /* box model: padding */
+  border: 1px solid rgba(98,146,158,0.45);
+  border-radius: 999px;
+  background: rgba(98,146,158,0.14);
+  color: #33606a;
+  font-weight: 600;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+.pill:hover { background: rgba(98,146,158,0.28); transform: translateY(-1px); }
+.pill-learn {
+  background: rgba(84,106,123,0.12);
+  border-color: rgba(84,106,123,0.45);
+  color: #43586a;
+}
+
+.tag {
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(57,61,63,0.07);
+  color: #393D3F;
+  font-weight: 700;
+}
+
+/* ---------- Cards (transition + transform hover) ---------- */
+.skill-card {
+  padding: 22px;                            /* box model */
+  border: 1px solid rgba(57,61,63,0.12);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.skill-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(98,146,158,0.55);
+  box-shadow: 0 16px 40px rgba(57,61,63,0.12);
+}
+.skill-title { font-weight: 700; font-size: 1rem; color: #393D3F; }
+
+.project-card {
+  border: 1px solid rgba(57,61,63,0.12);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.project-card:hover {
+  transform: translateY(-8px);               /* required hover interaction */
+  border-color: rgba(98,146,158,0.6);
+  box-shadow: 0 20px 50px rgba(98,146,158,0.22);
+}
+
+.btn-card {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #FDFDFF;
+  font-weight: 700;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.btn-card:hover { transform: translateY(-2px); background: #546A7B; }
+.btn-card-ghost {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(57,61,63,0.25);
+  color: #393D3F;
+  font-weight: 700;
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.btn-card-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+/* ---------- Stats / timeline / contact / forms ---------- */
+.stat {
+  display: flex; align-items: baseline; gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid rgba(57,61,63,0.12);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.stat-num { font-family: "JetBrains Mono", monospace; font-weight: 700; color: var(--accent); }
+.stat-label { font-size: 0.8rem; color: var(--muted); }
+
+.timeline-item { position: relative; }
+.timeline-item::before {
+  content: "";
+  position: absolute; left: -31px; top: 4px;   /* absolute positioning */
+  width: 11px; height: 11px; border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(98,146,158,0.6);
+}
+
+.contact-row {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid rgba(57,61,63,0.14);
+  border-radius: 10px;
+  background: var(--surface);
+  color: #393D3F;
+  font-weight: 600;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.contact-row:hover { border-color: var(--accent); color: var(--accent); transform: translateX(3px); }
+
+.form-label { display: block; font-size: 0.85rem; font-weight: 600; color: #393D3F; margin-bottom: 6px; }
+.form-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(57,61,63,0.18);
+  background: rgba(198,197,185,0.18);
+  color: #393D3F;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(98,146,158,0.25); }
+.form-input::placeholder { color: #9a998c; }
+
+.terminal {
+  overflow: hidden;
+  background: var(--surface);
+}
+
+/* ---------- Keyframe animations (required) ---------- */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.anim-fade-up { animation: fade-up 0.7s ease both; }
+.anim-float { animation: float-y 5s ease-in-out infinite; }
+.caret { color: var(--accent); animation: blink 1s step-end infinite; }
+
+/* ---------- Responsive tweaks (media queries) ---------- */
+@media (max-width: 768px) {
+  .hero-glow { width: 420px; height: 220px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .anim-float, .anim-fade-up, .caret { animation: none; }
+  html { scroll-behavior: auto; }
+}

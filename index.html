@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Chirank — Developer Portfolio</title>
+  <meta name="description" content="Chirank — CS student who built StackVM, a zero-dependency bytecode VM. HTML + Tailwind CSS portfolio." />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-[#FDFDFF] text-[#393D3F] antialiased">
+
+  <!-- ================= NAVBAR (Flexbox + sticky + z-index) ================= -->
+  <header class="sticky top-0 z-50 border-b border-[#393D3F]/10 bg-[#FDFDFF]/90 backdrop-blur-md">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4" aria-label="Main navigation">
+      <a href="#hero" class="flex items-center gap-2 font-mono text-lg font-bold tracking-tight">
+        <span class="grid h-9 w-9 place-items-center rounded-lg bg-[#62929E] font-mono text-sm font-bold text-[#FDFDFF]">C&gt;_</span>
+        <span>chirank<span class="text-[#62929E]">.dev</span></span>
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="hidden items-center gap-7 text-sm font-medium text-[#393D3F]/80 md:flex">
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#skills">Skills</a></li>
+        <li><a class="nav-link" href="#projects">Projects</a></li>
+        <li><a class="nav-link" href="#education">Journey</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="hidden md:block">
+        <a href="https://github.com/chirank25" target="_blank" rel="noopener"
+           class="rounded-lg bg-[#62929E] px-4 py-2 text-sm font-semibold text-[#FDFDFF] transition-transform duration-300 hover:-translate-y-0.5 hover:bg-[#546A7B]">GitHub ↗</a>
+      </div>
+
+      <!-- Mobile: CSS-only hamburger -->
+      <div class="md:hidden">
+        <input type="checkbox" id="menu-toggle" class="peer hidden" />
+        <label for="menu-toggle" class="cursor-pointer rounded-lg border border-[#393D3F]/15 px-3 py-2 font-mono text-sm" aria-label="Toggle menu">☰</label>
+        <ul class="absolute left-0 right-0 top-full hidden flex-col gap-1 border-b border-[#393D3F]/10 bg-[#FDFDFF] px-5 py-4 text-[#393D3F] peer-checked:flex">
+          <li><a class="block rounded px-2 py-2 hover:bg-[#393D3F]/5" href="#about">About</a></li>
+          <li><a class="block rounded px-2 py-2 hover:bg-[#393D3F]/5" href="#skills">Skills</a></li>
+          <li><a class="block rounded px-2 py-2 hover:bg-[#393D3F]/5" href="#projects">Projects</a></li>
+          <li><a class="block rounded px-2 py-2 hover:bg-[#393D3F]/5" href="#education">Journey</a></li>
+          <li><a class="block rounded px-2 py-2 hover:bg-[#393D3F]/5" href="#contact">Contact</a></li>
+          <li><a class="mt-2 block rounded-lg bg-[#62929E] px-3 py-2 text-center font-semibold text-[#FDFDFF]" href="https://github.com/chirank25" target="_blank" rel="noopener">GitHub ↗</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ================= HERO (Flexbox split layout) ================= -->
+    <section id="hero" class="relative overflow-hidden">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="mx-auto flex max-w-6xl flex-col items-center gap-10 px-5 pb-16 pt-14 md:flex-row md:justify-between md:pt-20">
+        <div class="max-w-xl anim-fade-up">
+          <p class="font-mono text-sm text-[#62929E]">$ whoami</p>
+          <h1 class="mt-3 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+            Hello, I'm Chirank<br />
+            <span class="bg-gradient-to-r from-[#62929E] via-[#546A7B] to-[#393D3F] bg-clip-text text-transparent">Software Developer focused on Artificial Intelligence.</span>
+          </h1>
+          <p class="mt-4 text-base leading-relaxed text-[#546A7B]">
+            Computer Science student with a strong foundation in software development
+            and a growing focus on <strong class="text-[#393D3F]">machine learning and deep learning</strong>.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-2 font-mono text-xs">
+            <span class="pill">Java</span><span class="pill">Python</span><span class="pill">JavaScript</span>
+            <span class="pill">HTML</span><span class="pill">CSS</span>
+          </div>
+        </div>
+
+        <!-- Terminal card (position relative + absolute dots) -->
+        <div class="w-full max-w-md anim-float">
+          <div class="terminal relative rounded-2xl border border-[#393D3F]/10 bg-white p-5 shadow-2xl shadow-[#393D3F]/10">
+            <div class="absolute left-4 top-4 flex gap-1.5" aria-hidden="true">
+              <span class="h-3 w-3 rounded-full bg-red-400"></span>
+              <span class="h-3 w-3 rounded-full bg-[#C6C5B9]"></span>
+              <span class="h-3 w-3 rounded-full bg-[#62929E]"></span>
+            </div>
+            <div class="mt-6 space-y-2 font-mono text-sm leading-relaxed">
+              <p><span class="text-[#546A7B]">$</span> <span class="text-[#546A7B]">role</span><br /><span class="text-[#393D3F]">Software Developer · ML Explorer</span></p>
+              <p><span class="text-[#546A7B]">$</span> <span class="text-[#546A7B]">currently_building</span><br /><span class="text-[#62929E]">StackVM · bytecode VM playground</span></p>
+              <p><span class="text-[#546A7B]">$</span> <span class="text-[#546A7B]">philosophy</span><br /><span class="text-[#393D3F]">Understand it. Build it. Own it.</span></p>
+              <p><span class="text-[#546A7B]">$</span> <span class="caret">▊</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about" class="border-t border-[#393D3F]/10 bg-[#C6C5B9]/25">
+      <div class="mx-auto grid max-w-6xl gap-8 px-5 py-16 md:grid-cols-3 md:py-20">
+        <div>
+          <p class="font-mono text-sm uppercase tracking-[0.2em] text-[#62929E]">01 — WHO I AM</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight">About Me</h2>
+        </div>
+        <div class="md:col-span-2">
+          <p class="text-lg leading-relaxed text-[#393D3F]/80">
+            I'm <strong class="text-[#393D3F]">Chirank</strong>, a Computer Science student focused on
+            software development and artificial intelligence. I enjoy turning ideas into
+            working software — from developer tools to clean, responsive interfaces.
+          </p>
+          <p class="mt-4 leading-relaxed text-[#546A7B]">
+            My approach is fundamentals-first: readable code, thoughtful design, and steady
+            improvement.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS (Grid / Bento) ================= -->
+    <section id="skills" class="border-t border-[#393D3F]/10">
+      <div class="mx-auto max-w-6xl px-5 py-16 md:py-20">
+        <p class="font-mono text-sm uppercase tracking-[0.2em] text-[#62929E]">02 — WHAT I KNOW</p>
+        <h2 class="mt-2 text-3xl font-bold tracking-tight">Skills</h2>
+        <p class="mt-2 max-w-2xl text-[#546A7B]">A clear overview of my technical background, tools, and current areas of focus.</p>
+
+        <div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="skill-card lg:col-span-2">
+            <h3 class="skill-title">🎨 Frontend</h3>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">Flexbox</span>
+              <span class="pill">CSS Grid</span><span class="pill">Tailwind CSS</span><span class="pill">Responsive Design</span>
+            </div>
+            <p class="mt-3 text-sm text-[#546A7B]">Focused on responsive layouts, clean styling, and polished user interfaces.</p>
+          </article>
+          <article class="skill-card">
+            <h3 class="skill-title">⚙️ Languages</h3>
+            <ul class="mt-3 space-y-1.5 text-sm text-[#393D3F]/80">
+              <li>→ Java</li>
+              <li>→ Python</li>
+              <li>→ JavaScript</li>
+              <li>→ HTML</li>
+              <li>→ CSS</li>
+            </ul>
+          </article>
+          <article class="skill-card">
+            <h3 class="skill-title">🧰 Tools</h3>
+            <ul class="mt-3 space-y-1.5 text-sm text-[#393D3F]/80">
+              <li>→ Git &amp; GitHub</li>
+              <li>→ Zed</li>
+            </ul>
+          </article>
+          <article class="skill-card sm:col-span-2 lg:col-span-2">
+            <h3 class="skill-title">📚 Currently Learning</h3>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="pill pill-learn">TypeScript</span><span class="pill pill-learn">React</span>
+              <span class="pill pill-learn">Node.js</span><span class="pill pill-learn">Machine Learning</span>
+              <span class="pill pill-learn">Deep Learning</span>
+            </div>
+          </article>
+          <article class="skill-card sm:col-span-2 lg:col-span-2">
+            <h3 class="skill-title">💡 Engineering Habits</h3>
+            <p class="mt-3 text-sm leading-relaxed text-[#546A7B]">Clean, readable code · Consistent design · Mobile-first thinking · Always testing and refining.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS (Grid gallery) ================= -->
+    <section id="projects" class="border-t border-[#393D3F]/10 bg-[#C6C5B9]/25">
+      <div class="mx-auto max-w-6xl px-5 py-16 md:py-20">
+        <p class="font-mono text-sm uppercase tracking-[0.2em] text-[#62929E]">03 — WHAT I'VE BUILT</p>
+        <h2 class="mt-2 text-3xl font-bold tracking-tight">Featured Project</h2>
+        <p class="mt-2 max-w-2xl text-[#546A7B]">A featured project demonstrating my approach to design, engineering, and problem-solving.</p>
+
+        <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-1 lg:grid-cols-1">
+          <article class="project-card group mx-auto w-full max-w-2xl">
+            <div class="h-36 rounded-t-2xl bg-gradient-to-br from-[#62929E] via-[#546A7B] to-[#C6C5B9] p-5 font-mono text-[#FDFDFF]">
+              <p class="text-xs font-bold opacity-80">STACKVM // VM PLAYGROUND</p>
+              <p class="mt-2 font-mono text-sm font-bold leading-snug">push 2<br />push 3<br />add → 5</p>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold">StackVM</h3>
+              <p class="mt-2 text-sm leading-relaxed text-[#546A7B]">Zero-dependency stack-based bytecode VM with animated playground. 18 opcodes, two-pass assembler, step debugger, 24 example programs across 5 themed categories.</p>
+              <div class="mt-3 flex flex-wrap gap-1.5 font-mono text-[11px]">
+                <span class="tag">TypeScript</span><span class="tag">Vite</span><span class="tag">CSS Animations</span>
+              </div>
+              <div class="mt-5 flex gap-3 text-sm font-semibold">
+                <a class="btn-card" href="https://github.com/chirank25/StackVM" target="_blank" rel="noopener">Live Demo</a>
+                <a class="btn-card-ghost" href="https://github.com/chirank25/StackVM" target="_blank" rel="noopener">GitHub</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EDUCATION / EXPERIENCE ================= -->
+    <section id="education" class="border-t border-[#393D3F]/10">
+      <div class="mx-auto grid max-w-6xl gap-8 px-5 py-16 md:grid-cols-3 md:py-20">
+        <div>
+          <p class="font-mono text-sm uppercase tracking-[0.2em] text-[#62929E]">04 — WHERE I'M HEADED</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight">Journey</h2>
+        </div>
+        <ol class="relative space-y-6 border-l-2 border-[#62929E]/40 pl-6 md:col-span-2">
+          <li class="timeline-item">
+            <h3 class="font-semibold">Computer Science <span class="ml-2 rounded bg-[#62929E]/15 px-2 py-0.5 font-mono text-xs text-[#62929E]">2025 — Present</span></h3>
+            <p class="mt-1 text-sm text-[#546A7B]">Focused on software engineering principles and structured problem-solving.</p>
+          </li>
+          <li class="timeline-item">
+            <h3 class="font-semibold">Frontend &amp; Backend Development</h3>
+            <p class="mt-1 text-sm text-[#546A7B]">Responsive interfaces with HTML, CSS, and Tailwind CSS — now expanding into server-side development with Node.js.</p>
+          </li>
+          <li class="timeline-item">
+            <h3 class="font-semibold">Machine Learning &amp; Deep Learning</h3>
+            <p class="mt-1 text-sm text-[#546A7B]">Studying ML/DL fundamentals with applied practice in TypeScript.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="border-t border-[#393D3F]/10 bg-[#C6C5B9]/25">
+      <div class="mx-auto grid max-w-6xl gap-10 px-5 py-16 md:grid-cols-2 md:py-20">
+        <div>
+          <p class="font-mono text-sm uppercase tracking-[0.2em] text-[#62929E]">05 — LET'S CONNECT</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight">Let's build something together.</h2>
+          <p class="mt-3 text-[#546A7B]">Fastest way to reach me is email. I read everything.</p>
+          <ul class="mt-6 space-y-3 text-sm">
+            <li><a class="contact-row" href="mailto:chirank2008@gmail.com">✉️ chirank2008@gmail.com</a></li>
+            <li><a class="contact-row" href="https://github.com/chirank25" target="_blank" rel="noopener">💻 github.com/chirank25</a></li>
+            <li><a class="contact-row" href="https://github.com/chirank25/StackVM" target="_blank" rel="noopener">⭐ Featured: StackVM repo</a></li>
+          </ul>
+        </div>
+        <form class="rounded-2xl border border-[#393D3F]/10 bg-white p-6 shadow-xl shadow-[#393D3F]/5" action="mailto:chirank2008@gmail.com" method="post" enctype="text/plain">
+          <label class="form-label" for="name">Name</label>
+          <input class="form-input" id="name" name="name" type="text" placeholder="Your name" required />
+          <label class="form-label mt-4" for="email">Email</label>
+          <input class="form-input" id="email" name="email" type="email" placeholder="you@example.com" required />
+          <label class="form-label mt-4" for="message">Message</label>
+          <textarea class="form-input min-h-28" id="message" name="message" placeholder="Hi Chirank, let's…" required></textarea>
+          <button type="submit" class="mt-5 w-full rounded-xl bg-[#62929E] px-5 py-3 text-sm font-semibold text-[#FDFDFF] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#546A7B]">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-[#393D3F]/10">
+    <div class="relative mx-auto flex max-w-6xl flex-col items-center justify-center gap-3 px-5 py-8 text-center text-sm text-[#546A7B]">
+      <p>© 2026 Chirank · Understand it. Build it. Own it.</p>
+      <p class="flex gap-4 font-medium">
+        <a class="transition-colors hover:text-[#62929E]" href="https://github.com/chirank25" target="_blank" rel="noopener">GitHub</a>
+        <a class="transition-colors hover:text-[#62929E]" href="mailto:chirank2008@gmail.com">Email</a>
+      </p>
+      <a class="font-medium transition-colors hover:text-[#62929E] sm:absolute sm:right-5 sm:top-1/2 sm:-translate-y-1/2" href="#hero">Back to top ↑</a>
+    </div>
+  </footer>
+
+</body>
+</html>
